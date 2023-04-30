@@ -44,31 +44,13 @@ LOGLEVEL=info
 GITHUB_USER=marcelpoelstra
 GITHUB_TOKEN=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
 GITHUB_REPOSITORY=marcelpoelstra/mrs-prod
+GIT_BRANCHE=master
 #
 # DON'T EDIT BELOW THIS LINE
 #
 # Begin installation
-apt update && apt -y dist-upgrade
-# Install prerequisite packages
-apt -y install ca-certificates apt-transport-https ca-certificates curl software-properties-common gnupg git
-# Install Docker
-install -m 0755 -d /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-chmod a+r /etc/apt/keyrings/docker.gpg
-echo   "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-"$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" |   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-apt update && apt -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-compose
-# Install VSCode Server and prepare for  access through SSH and pre install the Docker extension
-curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor -o microsoft.gpg
-mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
-sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
-apt-get update &&vapt-get install -y code
-code --install-extension ms-vscode-remote.remote-ssh --force
-code --install-extension ms-azuretools.vscode-docker --force
-# Fix temp dir to use tmpfs ramdisk
-ln -s /usr/share/systemd/tmp.mount /etc/systemd/system/
-systemctl enable tmp.mount
-# Set SSH to listen on port 2222 ONLY
+#
+# Set SSH to listen on port 2222 only
 mkdir -p /etc/systemd/system/ssh.socket.d
 cat >/etc/systemd/system/ssh.socket.d/listen.conf <<EOF
 [Socket]
@@ -83,9 +65,12 @@ ufw default allow outgoing
 ufw default deny incoming
 ufw allow 2222/tcp
 ufw allow 80/tcp
-#
 ufw allow 8000/tcp
 echo "y" | sudo ufw enable
+#
+# Fix temp dir to use tmpfs ramdisk
+ln -s /usr/share/systemd/tmp.mount /etc/systemd/system/
+systemctl enable tmp.mount
 #
 # Set persistant environment variables
 echo "export SUBDOMAIN=playout.monterosacdn.net" >> /etc/environment
@@ -112,11 +97,34 @@ echo  "export LOG_LEVEL=${LOGLEVEL}" >> /etc/environment
 # Instantly activate the variables
 source /etc/environment
 #
-# Clone the application stack from github
-git clone https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}
+# Install pending Ubuntu updates
+apt update && apt -y dist-upgrade
 #
+# Install prerequisite packages
+apt -y install ca-certificates apt-transport-https ca-certificates curl software-properties-common gnupg git
+#
+# Install Docker
+install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+chmod a+r /etc/apt/keyrings/docker.gpg
+echo   "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+"$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" |   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+apt update && apt -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-compose
+#
+# Install VSCode Server and prepare for access through SSH and install the Docker extension
+curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor -o microsoft.gpg
+mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+apt-get update &&vapt-get install -y code
+code --install-extension ms-vscode-remote.remote-ssh --force
+code --install-extension ms-azuretools.vscode-docker --force
+#
+# Clone the application stack from github
+cd
+git clone https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}
+cd  mrs-prod
+git checkout ${GIT_BRANCHE}
 # Start the stack
-cd && cd  mrs-prod
 docker-compose up -d 
 
 
