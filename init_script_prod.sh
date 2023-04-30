@@ -13,23 +13,31 @@ export REMOTE_STORAGE_URL=https://objectstorage.nl-ams-1.scalia.io/mrs-video-con
 export S3_ACCESS_KEY=X7H7GM5Q6CLY2Z55KTRC
 export S3_SECRET_KEY=PtWmCSHjZ0Tl7K5OLUiW22vdHAXngQrnHIvmMqQ7
 export S3_REGION=us-east-1
-export SUBDOMAIN=playout.monterosacdn.net
+export SUBDOMAIN=template.monterosacdn.net
 export LOGLEVEL=info
 export GITHUB_USER=marcelpoelstra
 export GITHUB_TOKEN=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
 export GITHUB_REPOSITORY=marcelpoelstra/mrs-prod
-
+#
 #begin installation
-apt update && apt dist-upgrade
+apt update && apt -y dist-upgrade
 #install pre requisites
-apt install ca-certificates curl gnupg git mc 
+apt -y install ca-certificates apt-transport-https ca-certificates curl software-properties-common
+gnupg git mc 
 #install Docker
 install -m 0755 -d /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 chmod a+r /etc/apt/keyrings/docker.gpg
 echo   "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
 "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" |   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+apt update && apt -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-compose
+#prepare for VSCode
+curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor -o microsoft.gpg
+mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+apt-get update &&vapt-get install -y code
+code --install-extension ms-vscode-remote.remote-ssh --force
+code --install-extension ms-azuretools.vscode-docker --force
 # fix temp dir to use tmpfs
 ln -s /usr/share/systemd/tmp.mount /etc/systemd/system/
 systemctl enable tmp.mount
@@ -50,8 +58,7 @@ ufw allow 2222/tcp
 ufw allow 80/tcp
 ufw allow 443/tcp
 ufw allow 8000/tcp
-ufw enable
-
+echo "y" | sudo ufw enable
 
 # Set persistant environment
 echo "export SUBDOMAIN=playout.monterosacdn.net" >> /etc/environment
@@ -88,6 +95,7 @@ git clone https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}
 
 #start stack
 cd  mrs-prod
-dcocker-compose up -d
+
+docker-compose up -d
 
 
