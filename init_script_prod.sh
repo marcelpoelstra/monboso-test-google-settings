@@ -122,12 +122,12 @@ echo   "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/doc
 apt update && apt -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-compose
 #
 # Install VSCode Server and prepare for access through SSH and install the Docker extension
-curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor -o microsoft.gpg
-mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
-sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
-apt-get update &&vapt-get install -y code
-code --install-extension ms-vscode-remote.remote-ssh --force --no-sandbox --user-data-dir ~/.vscode-server
-code --install-extension ms-azuretools.vscode-docker --force --no-sandbox --user-data-dir ~/.vscode-server
+#curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor -o microsoft.gpg
+#mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+#sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+#apt-get update &&vapt-get install -y code
+#code --install-extension ms-vscode-remote.remote-ssh --force --no-sandbox --user-data-dir ~/.vscode-server
+#code --install-extension ms-azuretools.vscode-docker --force --no-sandbox --user-data-dir ~/.vscode-server
 #
 # Cleanup
 apt autoremove --purge
