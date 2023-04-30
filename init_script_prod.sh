@@ -4,7 +4,12 @@
 # Config script MRS Stack 
 # Tested and confirmed on Ubuntu Server 23.04  30/04/2023
 #
-# run as root
+# Make sure to run this script as root user (Don't use Sudo)
+#
+if [ $EUID -ne 0 ]; then
+    echo "This script must be run as user root. Please run the script with root privileges."
+    exit 1
+fi
 #
 # CUSTOM SETTINGS
 #
