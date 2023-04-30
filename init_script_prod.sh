@@ -135,5 +135,8 @@ cd  mrs-prod
 git checkout ${GIT_BRANCHE}
 # Start the stack
 docker-compose up -d 
+history -c
+
+
 
 
