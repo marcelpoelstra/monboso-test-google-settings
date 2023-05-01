@@ -96,13 +96,13 @@ echo "export CELERY_BACKEND=${CELERY_BACKEND}" >> /etc/profile.d/mrs_custom_para
 echo "export APP_BACKEND=${APP_BACKEND}" >> /etc/profile.d/mrs_custom_params.sh
 echo "export REMIX_TASK_TIMEOUT=${REMIX_TASK_TIMEOUT}" >> /etc/profile
 echo "export DAYS_TO_KEEP_TRANSITIONS_FOR=${DAYS_TO_KEEP_TRANSITIONS_FOR}" >> /etc/profile.d/mrs_custom_params.sh
-echo  "export S3_ACCESS_KEY=${S3_ACCESS_KEY}" >> /etc/profile.d/mrs_custom_params.sh
-echo  "export S3_SECRET_KEY=${S3_SECRET_KEY}" >> /etc/profile.d/mrs_custom_params.sh
-echo  "export S3_REGION=${S3_REGION}" >> /etc/profile.d/mrs_custom_params.sh
-echo  "export SUBDOMAIN=${CDNHOST}.${CDNDOMAIN}" >> /etc/profile.d/mrs_custom_params.sh
-echo  "export REMOTE_STORAGE_URL=${REMOTE_STORAGE_URL}" >> /etc/profile.d/mrs_custom_params.sh
-echo  "export UspLicenseKey=${UspLicenseKey}" >> /etc/profile.d/mrs_custom_params.sh
-echo  "export LOG_LEVEL=${LOGLEVEL}" >> /etc/profile.d/mrs_custom_params.sh
+echo "export S3_ACCESS_KEY=${S3_ACCESS_KEY}" >> /etc/profile.d/mrs_custom_params.sh
+echo "export S3_SECRET_KEY=${S3_SECRET_KEY}" >> /etc/profile.d/mrs_custom_params.sh
+echo "export S3_REGION=${S3_REGION}" >> /etc/profile.d/mrs_custom_params.sh
+echo "export SUBDOMAIN=${CDNHOST}.${CDNDOMAIN}" >> /etc/profile.d/mrs_custom_params.sh
+echo "export REMOTE_STORAGE_URL=${REMOTE_STORAGE_URL}" >> /etc/profile.d/mrs_custom_params.sh
+echo "export UspLicenseKey=${UspLicenseKey}" >> /etc/profile.d/mrs_custom_params.sh
+echo "export LOG_LEVEL=${LOGLEVEL}" >> /etc/profile.d/mrs_custom_params.sh
 #
 # Instantly activate the variables
 source /etc/profile
