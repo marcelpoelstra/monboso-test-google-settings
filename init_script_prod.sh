@@ -43,7 +43,7 @@ REMIX_TASK_TIMEOUT=600
 # Time out for the housekeeping job to clean out no longer needed transitions. Only removes transitions, not the channel.
 DAYS_TO_KEEP_TRANSITIONS_FOR=7
 # CDNHOST and CDNDOMAIN will form the base url for playout. Change CDNHOST! Default CDN domain monterosacdn.net change only when needed.
-CDNHOST=foo
+CDNHOST=playout
 CDNDOMAIN=monterosacdn.net
 # Log level for all containers in the stack
 LOGLEVEL=info
