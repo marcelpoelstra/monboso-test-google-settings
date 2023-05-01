@@ -11,8 +11,6 @@ if [ $EUID -ne 0 ]; then
     exit 1
 fi
 #
-# Run in screen session to mitigate the risk of SSH disconnedtion
-screen
 # CUSTOM SETTINGS
 #
 DEBIAN_FRONTEND=noninteractive
@@ -143,8 +141,7 @@ git checkout ${GIT_BRANCHE}
 # Start the stack
 docker-compose up -d 
 history -c && history -w
-exit
-history -c && history -w
+
 
 
 
