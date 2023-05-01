@@ -12,9 +12,9 @@ if [ $EUID -ne 0 ]; then
 fi
 #
 # CUSTOM SETTINGS
-#
-DEBIAN_FRONTEND=noninteractive
+#DEBIAN_FRONTEND=noninteractive
 # SSH public key
+
 SSH_PUB_KEY='ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC067R6KscUGcrdv0at5OLkE+goKESc3nIR2N0b4O77kBz0TmF6rgoS92NBpsMs7smofnCxILhJj1AZIKxhcRrLINe5vuBnhn0WZNjg/WXlIJkMGiWwzQQJJL5ZGaWnc/VWW6tBq1RBx5yME21As8RrQRbjiIs937LfNAaDcxi4soYXN3Q/s/ReGm/fMRPV4K3s1GRrAR9DBicC6wY4N/hfM9nng4uoRQLOgvcMfwlVWfJUdS0Tm533O3Z0Fc03Lo11njhl2jieOkwLIXoA5Ar5464uQc7xqekhDBomq6ybRw3vKqhsYzJVbGVi5UsUMOnXh8+2RnqkDcI+F60f/5d0Qxl2vC4q08SIxBenF07XUr1+jlED0kUcBIZ9xWep6cJP529PSwydCMW9cQ2nCflkS7fMDCniUO/GnKbrkcSfAjzdfboKblUaZk+NTJqBWNpjFyN+WKSvIDZ2bckMfgpwgw/sv6q4lv1E/1AF07b7K4pLrZjy7jAjs8pWkJ/h+rU='
 # Virtual Channel API KEY default derived from machine-id, but changing is possible
 API_KEY=($(cat /etc/machine-id | md5sum))
@@ -94,7 +94,7 @@ echo "export RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS=\"${RABBITMQ_SERVER_ADDITIONAL_
 echo "export CELERY_BROKER=${CELERY_BROKER}" >> /etc/profile.d/mrs_custom_params.sh
 echo "export CELERY_BACKEND=${CELERY_BACKEND}" >> /etc/profile.d/mrs_custom_params.sh
 echo "export APP_BACKEND=${APP_BACKEND}" >> /etc/profile.d/mrs_custom_params.sh
-echo "export REMIX_TASK_TIMEOUT=${REMIX_TASK_TIMEOUT}" >> /etc/profile
+echo "export REMIX_TASK_TIMEOUT=${REMIX_TASK_TIMEOUT}" >> /etc/mrs_custom_params.sh
 echo "export DAYS_TO_KEEP_TRANSITIONS_FOR=${DAYS_TO_KEEP_TRANSITIONS_FOR}" >> /etc/profile.d/mrs_custom_params.sh
 echo "export S3_ACCESS_KEY=${S3_ACCESS_KEY}" >> /etc/profile.d/mrs_custom_params.sh
 echo "export S3_SECRET_KEY=${S3_SECRET_KEY}" >> /etc/profile.d/mrs_custom_params.sh
