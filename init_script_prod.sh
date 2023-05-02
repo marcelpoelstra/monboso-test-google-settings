@@ -79,13 +79,14 @@ ufw allow 8000/tcp
 echo "y" | sudo ufw enable
 #
 # Fix temp dir to use tmpfs ramdisk
-ln -s /usr/share/systemd/tmp.mount /etc/systemd/system/
-systemctl enable tmp.mount
-#
+#ln -s /usr/share/systemd/tmp.mount /etc/systemd/system/
+#systemctl enable tmp.mount
+# prepare cache dir for nginx
+mkdir -p /var/cache/nginx
 # Set persistant environment variables
 echo "export SUBDOMAIN=playout.monterosacdn.net" >> /etc/profile.d/mrs_custom_params.sh
 echo "export API_KEY=${API_KEY}" >> /etc/profile.d/mrs_custom_params.sh
-echo "export API_INSECURE=FALSE" >> /etc/profile.d/mrs_custom_params.sh
+echo "export API_INSECURE=False" >> /etc/profile.d/mrs_custom_params.sh
 echo "export API_PORT=8000" >> /etc/profile.d/mrs_custom_params.sh
 echo "export RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER}" >> /etc/profile.d/mrs_custom_params.sh
 echo "export RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS}" >> /etc/profile.d/mrs_custom_params.sh
@@ -119,7 +120,7 @@ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o 
 chmod a+r /etc/apt/keyrings/docker.gpg
 echo   "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
 "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" |   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-apt update && apt -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-compose
+apt update && apt -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 #
 # Cleanup
 apt autoremove --purge
@@ -131,8 +132,11 @@ git clone https://${GITHUB_USER}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}
 cd  mrs-prod
 git checkout ${GIT_BRANCHE}
 # Start the stack
-docker-compose up -d 
+docker compose up -d 
 history -c && history -w
+reboot
+
+
 
 
 
