@@ -1,0 +1,54 @@
+printenv production setup
+
+
+SHELL=/bin/bash
+COLORTERM=truecolor
+API_PORT=8000
+TERM_PROGRAM_VERSION=1.79.2
+LOG_LEVEL=info
+SUBDOMAIN=playout.monterosacdn.net
+RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS=-rabbit consumer_timeout 31622400000
+API_INSECURE=False
+CELERY_BACKEND=redis://redis:6379/0
+PWD=/root
+LOGNAME=root
+XDG_SESSION_TYPE=tty
+S3_REGION=us-east-1
+RABBITMQ_DEFAULT_USER=unified
+REMOTE_STORAGE_URL=https://objectstorage.nl-ams-1.scalia.io/mrs-video-content/content/
+RABBITMQ_DEFAULT_PASS=unified
+VSCODE_GIT_ASKPASS_NODE=/root/.vscode-server/bin/695af097c7bd098fbf017ce3ac85e09bbc5dda06/node
+API_KEY=e55d657b5b8d4115a41d40e38288c1fb
+HOME=/root
+LANG=en_US.UTF-8
+S3_SECRET_KEY=PtWmCSHjZ0Tl7K5OLUiW22vdHAXngQrnHIvmMqQ7
+LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.swp=00;90:*.tmp=00;90:*.dpkg-dist=00;90:*.dpkg-old=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:
+GIT_ASKPASS=/root/.vscode-server/bin/695af097c7bd098fbf017ce3ac85e09bbc5dda06/extensions/git/dist/askpass.sh
+SSH_CONNECTION=141.138.217.197 51338 45.8.236.123 2222
+DAYS_TO_KEEP_TRANSITIONS_FOR=7
+VSCODE_GIT_ASKPASS_EXTRA_ARGS=
+LESSCLOSE=/usr/bin/lesspipe %s %s
+XDG_SESSION_CLASS=user
+TERM=xterm-256color
+UspLicenseKey=bWFyY2VsQG1hcmNlbHBvZWxzdHJhLm5sfDIwMjIwOTA1IDAwOjAwOjAwLDM5NXxzdHJlYW0odm9kLGxpdmUsdm9kMmxpdmUpO2RybShhZXMsc2FtcGxlX2FlcyxwbGF5cmVhZHkscGxheXJlYWR5X2VudmVsb3BlLHBpZmYyY2VuYyxmYXhzLG1hcmxpbix3aWRldmluZSxkeGRybSx2ZXJpbWF0cml4X2hscyxjb25heF9wcl9obHMsaXJkZXRvX3NrZSk7cGFja2FnZShkYXNoLGhscyxpc3MsaGRzLG1wNCxjbWFmKTtjYXB0dXJlKGlzcyxoZHMsaGxzLGRhc2gsZGVjcnlwdCk7cmVtaXgobnB2cix2b2QsbGl2ZSk7ZW5jb2RlKGF2Yyk7ZGVjb2RlKGF2Yyk7bWV0YWRhdGEodGltZWQpO3N1cHBvcnQoMSk7aW9fb3B0KCk7Y2hlY2soKTtvZW0oKTt2aXJ0dWFsX2NoYW5uZWwoYmFzZSxkcm0sdGltZWRfbWV0YWRhdGEsbGl2ZV9zb3VyY2UpO3ZpcnR1YWxfY2hhbm5lbF9jb3VudCgxMCk7dmVyc2lvbigxLjExLjEzKXxwcm9kdWN0aW9uX0NlcnRpZmllZF9LZXl8NjdhYTBlMmYxNGFkNDQ2M2E3MmNlNGRhZjk3NWZjM2V8MjJhNjExYmQyYmI4ZGI4MzFlZDcyMzJkNTU3YTkwOTU4MDVhNzJiM2ZkY2ZlNTg3N2U0YmRjMTdkYjBjMjkwYWZiYjc3MDZmNDUxZDYxYTBkYWNiZDg3OWNhNzVlMDkzNmFlMGM0ODg4YTdhMTFiMjFhNDJkMzQxNWY3M2YzMWQyNzNkODhlZDg4MTNlNDg0ODcxN2I5ZGMyOGUwNDNmZTUwNzFlZTUxNjU1YWE3YzY5ZThiNjI4ZmQ5OWQ5YzkzMWYwYTQzMDJlNzg4MDBkZGRiNmM4MDk4ODQyYmQ1MGQzZGI5M2Q0YmJkNjI4NzYwMDRhMWZkOTc0MDZkMzU5Zg==
+LESSOPEN=| /usr/bin/lesspipe %s
+USER=root
+RABBITMQ_HOST=rabbitmq
+VSCODE_GIT_IPC_HANDLE=/run/user/0/vscode-git-e5fab0cdd8.sock
+APP_BACKEND=redis://redis:6379/0
+SHLVL=2
+XDG_SESSION_ID=1587
+XDG_RUNTIME_DIR=/run/user/0
+SSH_CLIENT=141.138.217.197 51338 2222
+CELERY_BROKER=
+LC_ALL=en_US.UTF-8
+VSCODE_GIT_ASKPASS_MAIN=/root/.vscode-server/bin/695af097c7bd098fbf017ce3ac85e09bbc5dda06/extensions/git/dist/askpass-main.js
+XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/snapd/desktop
+BROWSER=/root/.vscode-server/bin/695af097c7bd098fbf017ce3ac85e09bbc5dda06/bin/helpers/browser.sh
+PATH=/root/.vscode-server/bin/695af097c7bd098fbf017ce3ac85e09bbc5dda06/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/0/bus
+S3_ACCESS_KEY=X7H7GM5Q6CLY2Z55KTRC
+OLDPWD=/root/mrs-prod
+TERM_PROGRAM=vscode
+VSCODE_IPC_HOOK_CLI=/run/user/0/vscode-ipc-062de6d3-c97f-4a7f-a4a1-c4838dac3202.sock
+_=/usr/bin/printenv
