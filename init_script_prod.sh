@@ -42,6 +42,13 @@ APP_BACKEND='redis://redis:6379/0'
 REMIX_TASK_TIMEOUT=600
 # Time out for the housekeeping job to clean out no longer needed transitions. Only removes transitions, not the channel.
 DAYS_TO_KEEP_TRANSITIONS_FOR=7
+# Scheduled task time settings
+# Housekeeping cleanup daily hour and minute, default 02:00
+HOUSEKEEPING_CRON_HOUR=2
+HOUSEKEEPING_CRON_MINUTE=0
+# Check channel every X seconds
+CHECK_CHANNEL_SECONDS=10
+#
 # CDNHOST and CDNDOMAIN will form the base url for playout. Change CDNHOST! Default CDN domain monterosacdn.net change only when needed.
 CDNHOST=playout
 CDNDOMAIN=monterosacdn.net
