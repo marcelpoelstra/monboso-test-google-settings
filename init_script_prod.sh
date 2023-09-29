@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # Monte Rosa Solutiions
-# Config script MRS Stack 
+# Config script MRS Stack  MRS-DEV
 # Tested and confirmed on Ubuntu Server 23.04  30/04/2023
 #
 # Make sure to run this script as root user (Don't use Sudo)
