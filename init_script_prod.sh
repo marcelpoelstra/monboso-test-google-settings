@@ -23,11 +23,11 @@ API_KEY=($(cat /etc/machine-id | md5sum))
 # Unified Streaming License Key
 UspLicenseKey='bWFyY2VsQG1hcmNlbHBvZWxzdHJhLm5sfDIwMjIwOTA1IDAwOjAwOjAwLDM5NXxzdHJlYW0odm9kLGxpdmUsdm9kMmxpdmUpO2RybShhZXMsc2FtcGxlX2FlcyxwbGF5cmVhZHkscGxheXJlYWR5X2VudmVsb3BlLHBpZmYyY2VuYyxmYXhzLG1hcmxpbix3aWRldmluZSxkeGRybSx2ZXJpbWF0cml4X2hscyxjb25heF9wcl9obHMsaXJkZXRvX3NrZSk7cGFja2FnZShkYXNoLGhscyxpc3MsaGRzLG1wNCxjbWFmKTtjYXB0dXJlKGlzcyxoZHMsaGxzLGRhc2gsZGVjcnlwdCk7cmVtaXgobnB2cix2b2QsbGl2ZSk7ZW5jb2RlKGF2Yyk7ZGVjb2RlKGF2Yyk7bWV0YWRhdGEodGltZWQpO3N1cHBvcnQoMSk7aW9fb3B0KCk7Y2hlY2soKTtvZW0oKTt2aXJ0dWFsX2NoYW5uZWwoYmFzZSxkcm0sdGltZWRfbWV0YWRhdGEsbGl2ZV9zb3VyY2UpO3ZpcnR1YWxfY2hhbm5lbF9jb3VudCgxMCk7dmVyc2lvbigxLjExLjEzKXxwcm9kdWN0aW9uX0NlcnRpZmllZF9LZXl8NjdhYTBlMmYxNGFkNDQ2M2E3MmNlNGRhZjk3NWZjM2V8MjJhNjExYmQyYmI4ZGI4MzFlZDcyMzJkNTU3YTkwOTU4MDVhNzJiM2ZkY2ZlNTg3N2U0YmRjMTdkYjBjMjkwYWZiYjc3MDZmNDUxZDYxYTBkYWNiZDg3OWNhNzVlMDkzNmFlMGM0ODg4YTdhMTFiMjFhNDJkMzQxNWY3M2YzMWQyNzNkODhlZDg4MTNlNDg0ODcxN2I5ZGMyOGUwNDNmZTUwNzFlZTUxNjU1YWE3YzY5ZThiNjI4ZmQ5OWQ5YzkzMWYwYTQzMDJlNzg4MDBkZGRiNmM4MDk4ODQyYmQ1MGQzZGI5M2Q0YmJkNjI4NzYwMDRhMWZkOTc0MDZkMzU5Zg=='
 # S3 Bucket address
-REMOTE_STORAGE_URL=https://objectstorage.nl-ams-1.scalia.io/mrs-video-content/content/
+REMOTE_STORAGE_URL=https://storage.googleapis.com/gcp-monboso/video/
 # S3 Credentials
-S3_ACCESS_KEY=X7H7GM5Q6CLY2Z55KTRC
-S3_SECRET_KEY=PtWmCSHjZ0Tl7K5OLUiW22vdHAXngQrnHIvmMqQ7
-S3_REGION=us-east-1
+S3_ACCESS_KEY=GOOG7IFH4FJFFXXVBNSU3DDS
+S3_SECRET_KEY=UARXmCY3cmV4h6PEuSzFfvk4LJMF8IDcOhE9tkJ2
+S3_REGION=eu-west-4
 # RabbitMQ credentials and host. Defaults are ok, change when using external RabbitMQ instance.
 RABBITMQ_DEFAULT_USER=unified
 RABBITMQ_DEFAULT_PASS=unified
@@ -52,8 +52,8 @@ HOUSEKEEPING_CRON_MINUTE=0
 CHECK_CHANNEL_SECONDS=10
 #
 # CDNHOST and CDNDOMAIN will form the base url for playout. Change CDNHOST! Default CDN domain monterosacdn.net change only when needed.
-CDNHOST=playout
-CDNDOMAIN=monterosacdn.net
+CDNHOST=gcdn
+CDNDOMAIN=monboso.net
 # Log level for all containers in the stack
 LOGLEVEL=info
 # Github credentials for fetching the stack. Please note the token has an expiration date
